@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="dist/build.css">
+    <!-- endinject -->
+</head>
+<body ng-app="budget-app" ng-controller="BudgetController as budget">
+    <!-- header -->
+    <section class="hero is-success">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Budget Tracker
+          </h1>
+          <h2 class="subtitle">
+            Keep an <i class="fa fa-eye" aria-hidden="true"></i> on your <i class="fa fa-usd" aria-hidden="true"></i>
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- income column -->
+    <div class="columns budgetInputs">
+      <div class="column is-4 is-offset-2">
+
+        <label class="label">Description</label>
+        <p class="control">
+          <input ng-model="budget.income.description" class="input" type="text" placeholder="Enter an income item">
+        </p>
+
+        <label class="label">Amount</label>
+        <p class="control has-icon">
+          <input ng-model="budget.income.amount" class="input is-success" type="number" placeholder="00.00 format">
+          <i class="fa fa-usd" aria-hidden="true"></i>
+        </p>
+
+        <!-- actually a button -->
+        <a class="button is-success is-medium" ng-click="budget.addIncome()">
+            <span class="icon"><i class="fa fa-plus-square" aria-hidden="true"></i> </span> <span>Add Income</span>
+        </a>
+        <hr>
+        <section class="level panel">
+          <div class="level-item has-text-centered">
+            <p class="heading">Description</p>
+          </div>
+
+          <div class="level-item has-text-centered">
+            <p class="heading">Amount</p>
+          </div>
+        </section>
+        <div ng-repeat="income in budget.incomes">
+            <section class="level">
+                <div class="level-item has-text-centered">
+            <p class="heading">{{income.description}}</p>
+          </div>
+
+          <div class="level-item has-text-centered">
+            <p class="heading">{{income.amount | currency}}</p>
+          </div>
+            </section>
+        </div>
+      </div>
+
+      <!-- expense column -->
+      <div class="column is-4">
+
+        <label class="label">Description</label>
+        <p class="control has-icon">
+          <input ng-model="budget.expense.description" class="input" type="text" placeholder="Enter an expense">
+        </p>
+
+        <label class="label">Amount</label>
+        <p class="control has-icon">
+          <input ng-model="budget.expense.amount" class="input is-danger" type="number" placeholder="00.00 format">
+          <i class="fa fa-usd" aria-hidden="true"></i>
+        </p>
+
+        <!-- actually a button -->
+        <a class="button is-danger is-medium" ng-click="budget.addExpenses()">
+            <span class="icon"><i class="fa fa-plus-square" aria-hidden="true"></i> </span> <span>Add Expense</span>
+        </a>
+        <hr>
+        <section class="level panel">
+          <div class="level-item has-text-centered">
+            <p class="heading">Description</p>
+          </div>
+
+          <div class="level-item has-text-centered">
+            <p class="heading">Amount</p>
+          </div>
+        </section>
+        <div ng-repeat="expense in budget.expenses">
+            <section class="level">
+                <div class="level-item has-text-centered">
+            <p class="heading">{{expense.description}}</p>
+          </div>
+
+          <div class="level-item has-text-centered">
+            <p class="heading">{{expense.amount | currency}} </p>
+          </div>
+            </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- summary -->
+    <div class="box">
+        <div class="content level">
+            <h2 class="level-item has-text-centered">Summary</h2>
+        </div>
+
+        <section class="level">
+          <div class="level-item has-text-centered">
+            <p class="heading">Total Income</p>
+            <p class="title">{{budget.totalIncome | currency}}</p>
+          </div>
+
+          <div class="level-item has-text-centered">
+            <p class="heading">Total Expenses</p>
+            <p class="title">{{budget.totalExpense | currency}}</p>
+          </div>
+        </section>
+
+        <section class="level">
+          <div class="level-item has-text-centered">
+            <p class="heading">Left After Spending</p>
+            <p class="title">{{budget.sum | currency}}</p>
+          </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong><a href="https://github.com/wishinghand/07-Budget-Tracker">Budget Tracker</a></strong> built by <a href="http://qobbler.com">Jason Land</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+          </p>
+          <p>
+            <a class="icon" href="https://github.com/wishinghand">
+              <i class="fa fa-github"></i>
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- inject:js -->
+    <script src="dist/build.js"></script>
+    <!-- endinject -->
+</body>
+</html>

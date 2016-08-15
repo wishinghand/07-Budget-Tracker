@@ -4,22 +4,23 @@ var gulp = require('gulp'),
     connect = require('gulp-connect'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
+    runSequence = require('run-sequence'),
     clean = require('gulp-clean');
 
 var jsSources = ['src/js/**/*.js'],
     cssSources = ['src/style/**/*.scss'],
     htmlSources = ['**/*.html'];
 
-
 gulp.task('clean', function(){
-    return gulp.src('./dist/*.*', {read: false})
+    return gulp.src('./src/dist/*.*', {read: false})
     .pipe(clean());
 });
+
 /**JS gulp tasks*****************************************************************/
 gulp.task('concatJs', function(){
     gulp.src(['node_modules/angular/angular.js' ,'./src/js/**/*.js'])
     .pipe(concat('build.js'))
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('./src/dist/'))
 });
 
 /**CSS gulp tasks*****************************************************************/
@@ -28,11 +29,11 @@ gulp.task('compileSass', function(){
     .pipe(sass())
     //and concatenates them
     .pipe(concat('build.css'))
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('./src/dist/'))
 });
 
 gulp.task('inject', function(){
-    var sources = gulp.src(['./dist/*.css', './dist/*.js'])
+    var sources = gulp.src(['./src/dist/*.css', './src/dist/*.js'])
     gulp.src('./src/index.html')
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest('./src'));
@@ -48,8 +49,8 @@ gulp.task('connect', function(){
 
 //checks js/html/css on change...
 gulp.task('watch', function() {
-    gulp.watch(jsSources, ['js']);
-    gulp.watch(cssSources, ['css']);
+    gulp.watch(jsSources, ['js', 'concatJs']);
+    gulp.watch(cssSources, ['css', 'compileSass']);
     gulp.watch(htmlSources, ['html']);
 });
 
@@ -69,6 +70,8 @@ gulp.task('css', function() {
         .pipe(connect.reload())
 });
 
-gulp.task('build', ['clean', 'concatJs', 'compileSass']);
-
-gulp.task('serve', ['inject', 'connect', 'watch']);
+gulp.task('serve', function(done) {
+    runSequence('clean', 'concatJs', 'compileSass', 'inject', 'connect', 'watch',function() {
+        done();
+    });
+});

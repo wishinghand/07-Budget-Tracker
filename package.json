@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/wishinghand/07-Budget-Tracker/issues"
   },
-  "homepage": "https://github.com/wishinghand/07-Budget-Tracker"
+  "homepage": "https://github.com/wishinghand/07-Budget-Tracker",
+  "devDependencies": {
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-inject": "^4.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sass": "^2.3.2",
+    "run-sequence": "^1.2.2"
+  }
 }
