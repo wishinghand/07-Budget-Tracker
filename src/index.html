@@ -128,7 +128,8 @@
         <section class="level">
           <div class="level-item has-text-centered">
             <p class="heading">Left After Spending</p>
-            <p class="title">{{budget.sum | currency}}</p>
+            <p class="title" ng-class="{'dangerText':budget.sum < '0'}">{{budget.sum | currency}}</p>
+            <p class="notification is-danger content is-medium" ng-show="budget.sum < '0'">Warning: Your expenses are higher than your income.</p>
           </div>
         </section>
     </div>
