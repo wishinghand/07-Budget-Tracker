@@ -26,7 +26,7 @@
     <!-- income column -->
     <div class="columns budgetInputs">
       <div class="column is-4 is-offset-2">
-            <form action="javascript:void(0);">
+            <form action="javascript:void(0);" name="incomeEntry">
                 <label class="label">Description</label>
                 <p class="control">
                   <input ng-model="budget.income.description" class="input" type="text" placeholder="Enter an income item" required>
@@ -34,12 +34,12 @@
 
                 <label class="label">Amount</label>
                 <p class="control has-icon">
-                  <input ng-model="budget.income.amount" class="input is-success" type="number" placeholder="00.00 format">
-                  <i class="fa fa-usd" aria-hidden="true" required></i>
+                  <input ng-model="budget.income.amount" class="input is-success" type="number" placeholder="00.00 format" required>
+                  <i class="fa fa-usd" aria-hidden="true"></i>
                 </p>
 
                 <!-- actually a button -->
-                <button class="button is-success is-medium" ng-click="budget.addIncome()">
+                <button class="button is-success is-medium" ng-click="budget.addIncome()" ng-disabled="incomeEntry.$invalid">
                     <span class="icon"><i class="fa fa-plus-square" aria-hidden="true"></i> </span> <span>Add Income</span>
                 </button>
             </form>
@@ -69,7 +69,7 @@
       <!-- expense column -->
       <div class="column is-4">
 
-        <form action="javascript:void(0);">
+        <form action="javascript:void(0);" name="expenseEntry">
             <label class="label">Description</label>
             <p class="control has-icon">
               <input ng-model="budget.expense.description" class="input" type="text" placeholder="Enter an expense" required>
@@ -82,7 +82,7 @@
             </p>
 
             <!-- actually a button -->
-            <button class="button is-danger is-medium" ng-click="budget.addExpenses()">
+            <button class="button is-danger is-medium" ng-click="budget.addExpenses()" ng-disabled="expenseEntry.$invalid">
                 <span class="icon"><i class="fa fa-plus-square" aria-hidden="true"></i> </span> <span>Add Expense</span>
             </button>
         </form>
