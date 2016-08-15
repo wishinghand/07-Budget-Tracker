@@ -26,22 +26,23 @@
     <!-- income column -->
     <div class="columns budgetInputs">
       <div class="column is-4 is-offset-2">
+            <form action="javascript:void(0);">
+                <label class="label">Description</label>
+                <p class="control">
+                  <input ng-model="budget.income.description" class="input" type="text" placeholder="Enter an income item" required>
+                </p>
 
-        <label class="label">Description</label>
-        <p class="control">
-          <input ng-model="budget.income.description" class="input" type="text" placeholder="Enter an income item">
-        </p>
+                <label class="label">Amount</label>
+                <p class="control has-icon">
+                  <input ng-model="budget.income.amount" class="input is-success" type="number" placeholder="00.00 format">
+                  <i class="fa fa-usd" aria-hidden="true" required></i>
+                </p>
 
-        <label class="label">Amount</label>
-        <p class="control has-icon">
-          <input ng-model="budget.income.amount" class="input is-success" type="number" placeholder="00.00 format">
-          <i class="fa fa-usd" aria-hidden="true"></i>
-        </p>
-
-        <!-- actually a button -->
-        <a class="button is-success is-medium" ng-click="budget.addIncome()">
-            <span class="icon"><i class="fa fa-plus-square" aria-hidden="true"></i> </span> <span>Add Income</span>
-        </a>
+                <!-- actually a button -->
+                <button class="button is-success is-medium" ng-click="budget.addIncome()">
+                    <span class="icon"><i class="fa fa-plus-square" aria-hidden="true"></i> </span> <span>Add Income</span>
+                </button>
+            </form>
         <hr>
         <section class="level panel">
           <div class="level-item has-text-centered">
@@ -68,21 +69,23 @@
       <!-- expense column -->
       <div class="column is-4">
 
-        <label class="label">Description</label>
-        <p class="control has-icon">
-          <input ng-model="budget.expense.description" class="input" type="text" placeholder="Enter an expense">
-        </p>
+        <form action="javascript:void(0);">
+            <label class="label">Description</label>
+            <p class="control has-icon">
+              <input ng-model="budget.expense.description" class="input" type="text" placeholder="Enter an expense" required>
+            </p>
 
-        <label class="label">Amount</label>
-        <p class="control has-icon">
-          <input ng-model="budget.expense.amount" class="input is-danger" type="number" placeholder="00.00 format">
-          <i class="fa fa-usd" aria-hidden="true"></i>
-        </p>
+            <label class="label">Amount</label>
+            <p class="control has-icon">
+              <input ng-model="budget.expense.amount" class="input is-danger" type="number" placeholder="00.00 format" required>
+              <i class="fa fa-usd" aria-hidden="true"></i>
+            </p>
 
-        <!-- actually a button -->
-        <a class="button is-danger is-medium" ng-click="budget.addExpenses()">
-            <span class="icon"><i class="fa fa-plus-square" aria-hidden="true"></i> </span> <span>Add Expense</span>
-        </a>
+            <!-- actually a button -->
+            <button class="button is-danger is-medium" ng-click="budget.addExpenses()">
+                <span class="icon"><i class="fa fa-plus-square" aria-hidden="true"></i> </span> <span>Add Expense</span>
+            </button>
+        </form>
         <hr>
         <section class="level panel">
           <div class="level-item has-text-centered">
