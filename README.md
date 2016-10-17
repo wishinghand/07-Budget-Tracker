@@ -1,4 +1,4 @@
-# Mortgage calculator
+# Monthly Budget Calculator
 
 ## Technologies Used:
 - HTML
