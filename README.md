@@ -1,8 +1,6 @@
-# Project 7 at Origin Code Academy
+# Mortgage calculator
 
-## Mortgage calculator
-
-###Technologies Used:
+## Technologies Used:
 - HTML
 - CSS
     + SASS
